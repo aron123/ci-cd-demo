@@ -1,0 +1,14 @@
+{
+  "name": "ci-cd-demo",
+  "version": "1.0.0",
+  "description": "CI/CD demo",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Kiss, Aron",
+  "license": "MIT",
+  "dependencies": {
+    "mocha": "^8.3.2"
+  }
+}

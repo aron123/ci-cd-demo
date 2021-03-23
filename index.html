@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+        integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <script src="./calculator.js"></script>
+    <title>Calculator for CI/CD demo</title>
+</head>
+
+<body>
+    <div class="container">
+        <h5>Expression:</h5>
+        <div class="form-inline">
+            <input class="form-control form-control-sm mr-1" type="text" id="expression">
+            <button class="btn btn-sm btn-primary" onclick="onClick()">Calculate!</button>
+        </div>
+
+        <h5>Result:</h5>
+        <p id="result"></p>
+
+        <h5 class="mt-5">Version:</h5>
+        <p id="version"></p>
+    </div>
+
+    <script>
+        document.querySelector('#version').innerHTML = version;
+
+        function onClick() {
+            const result = calculate(document.querySelector('#expression').value);
+            document.querySelector('#result').innerHTML = result;
+        }
+    </script>
+</body>
+
+</html>
