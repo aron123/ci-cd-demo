@@ -15,4 +15,4 @@ echo "Uploading package-lock.json"
 
 # ssh: npm install
 
-ssh -i "./deployment/deploy_key" $SERVER_USER@$SERVER_IP pm2 restart calculator
+ssh -i ./deployment/deploy_key $SERVER_USER@$SERVER_IP pm2 restart calculator
