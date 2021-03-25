@@ -3,10 +3,20 @@ dist: xenial
 language: node_js
 node_js: 10
 
-before_install: npm i -g npm@latest
+before_install:
+  - openssl aes-256-cbc -K $encrypted_4cabe539b470_key -iv $encrypted_4cabe539b470_iv
+    -in ./deployment/deploy_key.enc -out ./deployment/deploy_key -d
+  - npm i -g npm@latest
 
 install: travis_retry npm install
 
 script: npm run test
 
 after_success: npm run report-coverage
+
+deploy:
+  - provider: script
+    script: ./deployment/deploy.sh
+    on:
+      branch: master
+      # tags: true
