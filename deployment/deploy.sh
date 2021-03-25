@@ -1,7 +1,7 @@
 #!/bin/bash
 
+# config ssh connection
 openssl aes-256-cbc -K $encrypted_4cabe539b470_key -iv $encrypted_4cabe539b470_iv -in ./deployment/deploy_key.enc -out ./deployment/deploy_key -d
-
 eval "$(ssh-agent -s)"
 chmod 600 ./deployment/deploy_key
 echo -e "Host $SERVER_IP\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
