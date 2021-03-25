@@ -10,3 +10,11 @@ install: travis_retry npm install
 script: npm run test
 
 after_success: npm run report-coverage
+
+deploy:
+  provider: script
+  script: ./deployment/deploy.sh
+  skip_cleanup: true
+  on:
+    branch: master
+    # tags: true
