@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "test": "mocha test/**.test.js",
-    "report-coverage": "nyc report --all --reporter=text-lcov | coveralls"
+    "report-coverage": "nyc report --reporter=text-lcov | coveralls"
   },
   "author": "Kiss, Aron",
   "license": "MIT",
