@@ -1,1 +1,2 @@
 [![Build Status](https://travis-ci.com/aron123/ci-cd-demo.svg?branch=master)](https://travis-ci.com/aron123/ci-cd-demo)
+[![Coverage Status](https://coveralls.io/repos/github/aron123/ci-cd-demo/badge.svg?branch=master)](https://coveralls.io/github/aron123/ci-cd-demo?branch=master)
