@@ -8,9 +8,9 @@ echo -e "Host $SERVER_IP\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 ssh-add ./deployment/deploy_key
 
 # copy files
-rsync -r controller $SERVER_USER@$SERVER_IP:~/ci-cd-demo/controller
-rsync -r service $SERVER_USER@$SERVER_IP:~/ci-cd-demo/service
-rsync -r static $SERVER_USER@$SERVER_IP:~/ci-cd-demo/static
+rsync -r controller $SERVER_USER@$SERVER_IP:~/ci-cd-demo/
+rsync -r service $SERVER_USER@$SERVER_IP:~/ci-cd-demo/
+rsync -r static $SERVER_USER@$SERVER_IP:~/ci-cd-demo/
 rsync index.js $SERVER_USER@$SERVER_IP:~/ci-cd-demo/
 rsync package*.json $SERVER_USER@$SERVER_IP:~/ci-cd-demo/
 
