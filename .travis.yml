@@ -12,8 +12,9 @@ script: npm run test
 after_success: npm run report-coverage
 
 deploy:
-  - provider: script
-    script: ./deployment/deploy.sh
-    on:
-      branch: master
-      # tags: true
+  provider: script
+  script: ./deployment/deploy.sh
+  skip_cleanup: true
+  on:
+    branch: master
+    # tags: true
