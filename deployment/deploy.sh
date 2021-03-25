@@ -15,5 +15,5 @@ rsync index.js $SERVER_USER@$SERVER_IP:~/ci-cd-demo/
 rsync package*.json $SERVER_USER@$SERVER_IP:~/ci-cd-demo/
 
 # start app
-ssh -i ./deployment/deploy_key $SERVER_USER@$SERVER_IP cd ~/ci-cd-demo/ && npm install
-ssh -i ./deployment/deploy_key $SERVER_USER@$SERVER_IP pm2 restart calculator
+ssh -i ./deployment/deploy_key $SERVER_USER@$SERVER_IP "cd ~/ci-cd-demo/ && npm install"
+ssh -i ./deployment/deploy_key $SERVER_USER@$SERVER_IP "pm2 restart calculator"
