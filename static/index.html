@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
         integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-    <script src="./calculator.js"></script>
     <title>Calculator for CI/CD demo</title>
 </head>
 
@@ -23,15 +22,29 @@
         <p id="result"></p>
 
         <h5 class="mt-5">Version:</h5>
-        <p id="version"></p>
+        <p id="version">v0.0.1</p>
     </div>
 
     <script>
-        document.querySelector('#version').innerHTML = version;
+        async function onClick() {
+            const result = document.querySelector('#result');
 
-        function onClick() {
-            const result = calculate(document.querySelector('#expression').value);
-            document.querySelector('#result').innerHTML = result;
+            const url = new URL(window.location + 'api/calculator');
+            const params = { expr: document.querySelector('#expression').value };
+            url.search = new URLSearchParams(params).toString();
+            
+            try {
+                const res = await fetch(url);
+                const data = await res.json();
+
+                if (!res.ok) {
+                    throw new Error(data.error);
+                }
+
+                result.innerHTML = data.result;
+            } catch (err) {
+                result.innerHTML = err.message;
+            }
         }
     </script>
 </body>

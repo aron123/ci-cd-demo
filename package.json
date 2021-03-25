@@ -4,11 +4,21 @@
   "description": "CI/CD demo",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "start": "node index.js",
+    "test": "mocha test/**.test.js",
+    "report-coverage": "nyc report --all --reporter=text-lcov | coveralls"
   },
   "author": "Kiss, Aron",
   "license": "MIT",
   "dependencies": {
-    "mocha": "^8.3.2"
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "coveralls": "^3.1.0",
+    "mocha": "^8.3.2",
+    "nyc": "^15.1.0"
+  },
+  "nyc": {
+    "include": [ "service/**.js" ]
   }
 }
