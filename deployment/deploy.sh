@@ -7,13 +7,13 @@ chmod 600 ./deployment/deploy_key
 echo -e "Host $SERVER_IP\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
 ssh-add ./deployment/deploy_key
 
-echo "Uploading controller/"
-echo "Uploading service/"
-echo "Uploading static/"
-echo "Uploading index.js"
-echo "Uploading package.json"
-echo "Uploading package-lock.json"
+# copy files
+rsync -r controller $SERVER_USER@$SERVER_IP:~/ci-cd-demo/controller
+rsync -r service $SERVER_USER@$SERVER_IP:~/ci-cd-demo/service
+rsync -r static $SERVER_USER@$SERVER_IP:~/ci-cd-demo/static
+rsync index.js $SERVER_USER@$SERVER_IP:~/ci-cd-demo/
+rsync package*.json $SERVER_USER@$SERVER_IP:~/ci-cd-demo/
 
-# ssh: npm install
-
+# start app
+ssh -i ./deployment/deploy_key $SERVER_USER@$SERVER_IP cd ~/ci-cd-demo/ && npm install
 ssh -i ./deployment/deploy_key $SERVER_USER@$SERVER_IP pm2 restart calculator
