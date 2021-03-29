@@ -10,10 +10,16 @@ function mul(a, b) {
     return a * b;
 }
 
-// TODO: Implement division
+function div(a, b) {
+    if (b == 0) {
+        throw new Error('Can not divide by zero.');
+    }
+
+    return a / b;
+}
 
 function calculate(expression) {
-    const regexp = /^([0-9]{1,})(\+|\-|\*)([0-9]{1,})$/
+    const regexp = /^([0-9]{1,})(\+|\-|\*|\/)([0-9]{1,})$/
     const parsed = expression.match(regexp);
 
     if (!parsed || parsed.length != 4) {
@@ -28,6 +34,7 @@ function calculate(expression) {
         case '+': return add(a, b);
         case '-': return sub(a, b);
         case '*': return mul(a, b);
+        case '/': return div(a, b);
     }
 }
 
